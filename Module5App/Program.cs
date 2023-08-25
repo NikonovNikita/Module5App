@@ -1,28 +1,60 @@
 ﻿using System;
 using System.Reflection.Metadata;
 
-class Program
+class MainClass
 {
+
+    static string ShowColor()
+    {
+        Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
+        var color = Console.ReadLine();
+
+        switch (color)
+        {
+            case "red":
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is red!");
+                break;
+
+            case "green":
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is green!");
+                break;
+            case "cyan":
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is cyan!");
+                break;
+            default:
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine("Your color is yellow!");
+                break;
+        }
+        return color;
+    }
+
     public static void Main(string[] args)
     {
-        (string name, string[] Dishes) User;
+        var favcolors = new string[3];
 
-        Console.WriteLine("Введите ваше имя ");
-        User.name = Console.ReadLine();
-        User.Dishes = new string[5];
-        
-        for(int i = 0; i <= User.Dishes.GetUpperBound(0); i++)
+        for (int i = 0;  i < favcolors.Length; i++)
         {
-            Console.Write("Введите ваше любимое блюдо номер {0} ", i + 1);
-            User.Dishes[i] = Console.ReadLine();
+            favcolors[i] = ShowColor();
         }
-        Console.WriteLine("Ваше имя {0}", User.name);
+        Console.WriteLine("Ваши любимые цвета: ");
 
-        int x = 1;
-        foreach (var num in User.Dishes)
+        foreach (var babix in favcolors)
         {
-            Console.WriteLine("Ваше любимое блюдо номер {0} - {1}", x, num);
-            x++;
+            Console.WriteLine(babix);
         }
+
+
     }
 }
