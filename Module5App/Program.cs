@@ -3,58 +3,41 @@ using System.Reflection.Metadata;
 
 class MainClass
 {
-
-    static string ShowColor()
+    static int[] GetArrayFromConsole()
     {
-        Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
-        var color = Console.ReadLine();
+        var result = new int[5];
 
-        switch (color)
+        for(int i = 0; i < result.Length; i++)
         {
-            case "red":
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.ForegroundColor = ConsoleColor.Black;
-
-                Console.WriteLine("Your color is red!");
-                break;
-
-            case "green":
-                Console.BackgroundColor = ConsoleColor.Green;
-                Console.ForegroundColor = ConsoleColor.Black;
-
-                Console.WriteLine("Your color is green!");
-                break;
-            case "cyan":
-                Console.BackgroundColor = ConsoleColor.Cyan;
-                Console.ForegroundColor = ConsoleColor.Black;
-
-                Console.WriteLine("Your color is cyan!");
-                break;
-            default:
-                Console.BackgroundColor = ConsoleColor.Yellow;
-                Console.ForegroundColor = ConsoleColor.Red;
-
-                Console.WriteLine("Your color is yellow!");
-                break;
+            Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+            result[i] = int.Parse(Console.ReadLine());
         }
-        return color;
+
+        int temp;
+        for (int i = 0; i < result.Length; i++)
+        {
+            for (int j = i + 1; j < result.Length; j++)
+            {
+                if (result[j] < result[i])
+                {
+                    temp = result[j];
+                    result[j] = result[i];
+                    result[i] = temp;
+                }
+            }
+        }
+        
+        for(int k = 0; k < result.Length; k++)
+        {
+            Console.WriteLine(result[k]);
+        }
+        
+        return result;
     }
+   
 
     public static void Main(string[] args)
     {
-        var favcolors = new string[3];
-
-        for (int i = 0;  i < favcolors.Length; i++)
-        {
-            favcolors[i] = ShowColor();
-        }
-        Console.WriteLine("Ваши любимые цвета: ");
-
-        foreach (var babix in favcolors)
-        {
-            Console.WriteLine(babix);
-        }
-
-
+        GetArrayFromConsole();
     }
 }
