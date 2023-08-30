@@ -3,17 +3,11 @@ using System.Reflection.Metadata;
 
 class MainClass
 {
-    public static void Main(string[] args)
-    {
-        GetArrayFromConsole();
-        SortArray();
-    }
-
     static int[] GetArrayFromConsole()
     {
         var result = new int[3];
-        
-        for(int i = 0; i < result.Length; i++)
+
+        for (int i = 0; i < result.Length; i++)
         {
             Console.WriteLine("Введите элемент массива номер {0}", i + 1);
             result[i] = int.Parse(Console.ReadLine());
@@ -26,9 +20,9 @@ class MainClass
     static int[] SortArray(int[] result)
     {
         int temp;
-        for(int i = 0; i < result.Length; i++)
+        for (int i = 0; i < result.Length; i++)
         {
-            for(int j = i + 1; j < result.Length; j++)
+            for (int j = i + 1; j < result.Length; j++)
             {
                 if (result[i] > result[j])
                 {
@@ -38,8 +32,17 @@ class MainClass
                 }
             }
         }
-        
+        foreach (int num in result)
+        {
+            Console.WriteLine(num);
+        }
         return result;
     }
+    public static void Main(string[] args)
+    {  
+        SortArray(GetArrayFromConsole());
+    }
+
+    
         
 }
