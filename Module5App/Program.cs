@@ -39,8 +39,9 @@ class MainClass
         return result;
     }
     public static void Main(string[] args)
-    {  
-        SortArray(GetArrayFromConsole());
+    {
+        var array = GetArrayFromConsole();
+        var sortedArray = SortArray(array);
     }
 
     
