@@ -46,16 +46,12 @@ class MainClass
                 }
             }
         }
-        foreach (int num in result)
-        {
-            Console.WriteLine(num);
-        }
         return result;
     }
     public static void Main(string[] args)
     {
-        var array = GetArrayFromConsole();
-        var sortedArray = SortArray(array);
+        var array = GetArrayFromConsole(10);
+        ShowArray(array, true);
     }
 
     
