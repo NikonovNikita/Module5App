@@ -17,7 +17,7 @@ class MainClass
         string[] favColors = new string[3];
         for(int i = 0; i < favColors.Length; i++)
         {
-        favColors[i] = ShowColor(Anketa.name, Anketa.age);
+        favColors[i] = ShowColor(Anketa.name);
         }
 
         Console.WriteLine("Ваши любимые цвета:");
@@ -27,9 +27,9 @@ class MainClass
         }
     }
     
-    static string ShowColor(string UserName, int UserAge)
+    static string ShowColor(string UserName = "Jane", params string[] favColors)
     {
-        Console.Write("{0}, {1},\nНапишите свой любимый цвет на английском с маленькой буквы ",UserName, UserAge);
+        Console.Write("{0},\nнапишите свой любимый цвет на английском с маленькой буквы ",UserName);
         var Color = Console.ReadLine();
         switch (Color)
         {
