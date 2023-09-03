@@ -3,6 +3,20 @@ using System.Reflection.Metadata;
 
 class MainClass
 {
+    static void ShowArray(int[] array, bool IsSort = false)
+    {
+        var temp = array;
+        if (IsSort)
+        {
+            SortArray(temp);
+        }
+        foreach(var item in temp)
+        {
+            Console.WriteLine(item + " ");
+        }
+
+    }
+    
     static int[] GetArrayFromConsole(int num = 5)
     {
         var result = new int[num];
