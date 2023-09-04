@@ -17,7 +17,7 @@ class MainClass
 
     }
     
-    static int[] GetArrayFromConsole(int num = 5)
+    static int[] GetArrayFromConsole(ref int num)
     {
         var result = new int[num];
 
@@ -50,7 +50,9 @@ class MainClass
     }
     public static void Main(string[] args)
     {
-        var array = GetArrayFromConsole(10);
+        Console.WriteLine("Enter a value of array num");
+        int ValueOfNum = int.Parse(Console.ReadLine());
+        var array = GetArrayFromConsole(ref ValueOfNum);
         ShowArray(array, true);
     }
 
