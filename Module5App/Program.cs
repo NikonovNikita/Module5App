@@ -3,20 +3,50 @@ using System.Reflection.Metadata;
 
 class MainClass
 {
-    static void ShowArray(int[] array, bool IsSort = false)
+    static int[] SortArrayDesc(int[] arrayDesc)
     {
-        var temp = array;
-        if (IsSort)
+        int temp;
+        for (int i = 0; i < arrayDesc.Length; i++)
         {
-            SortArray(temp);
+            for (int j = i + 1; j < arrayDesc.Length; j++)
+            {
+                if (arrayDesc[i] < arrayDesc[j])
+                {
+                    temp = arrayDesc[j];
+                    arrayDesc[j] = arrayDesc[i];
+                    arrayDesc[i] = temp;
+                }
+            }
         }
-        foreach(var item in temp)
+        Console.WriteLine("Ваш массив, отсортированный в порядке от большего к меньшему:");
+        foreach(int readArray in arrayDesc)
         {
-            Console.WriteLine(item + " ");
+            Console.Write(readArray + " ");
         }
-
+        return arrayDesc;
     }
-    
+    static int[] SortArrayAsc(int[] arrayAsc)
+    {
+        int temp;
+        for (int i = 0; i < arrayAsc.Length; i++)
+        {
+            for (int j = i + 1; j < arrayAsc.Length; j++)
+            {
+                if (arrayAsc[i] > arrayAsc[j])
+                {
+                    temp = arrayAsc[j];
+                    arrayAsc[j] = arrayAsc[i];
+                    arrayAsc[i] = temp;
+                }
+            }
+        }
+        Console.WriteLine("Ваш массив, отсортированный в порядке от меньшего к большему:");
+        foreach (int readArray in arrayAsc)
+        {
+            Console.Write(readArray + " ");
+        }
+        return arrayAsc;
+    }
     static int[] GetArrayFromConsole(ref int num)
     {
         var result = new int[num];
@@ -31,29 +61,18 @@ class MainClass
         return result;
     }
 
-    static int[] SortArray(int[] result)
+    static void SortArray(in int[] arrayToSort, out int[] sorteddesc, out int[] sortedasc )
     {
-        int temp;
-        for (int i = 0; i < result.Length; i++)
-        {
-            for (int j = i + 1; j < result.Length; j++)
-            {
-                if (result[i] > result[j])
-                {
-                    temp = result[j];
-                    result[j] = result[i];
-                    result[i] = temp;
-                }
-            }
-        }
-        return result;
+        sorteddesc = SortArrayDesc(arrayToSort);
+        sortedasc = SortArrayAsc(arrayToSort);
     }
     public static void Main(string[] args)
     {
-        Console.WriteLine("Enter a value of array num");
+        Console.WriteLine("Введите размерность массива num");
         int ValueOfNum = int.Parse(Console.ReadLine());
         var array = GetArrayFromConsole(ref ValueOfNum);
-        ShowArray(array, true);
+        SortArray(array, out int[] outsorteddesc, out int[] outsortedasc);
+        
     }
 
     
